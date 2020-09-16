@@ -3,6 +3,7 @@
 namespace SmallRuralDog\Admin\Middleware;
 
 use Closure;
+use CustomVendor\Exceptions\ValidatorException;
 use SmallRuralDog\Admin\Facades\Admin;
 
 class Authenticate
@@ -20,6 +21,7 @@ class Authenticate
         $redirectTo = admin_base_path(config('admin.auth.redirect_to', 'auth/login'));
 
         if (Admin::guard()->guest() && !$this->shouldPassThrough($request)) {
+            throw new ValidatorException('沒有登陸！',3002);
             return redirect()->guest($redirectTo);
         }
 
