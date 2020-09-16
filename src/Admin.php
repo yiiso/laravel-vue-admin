@@ -151,12 +151,12 @@ class Admin
     }
 
 
-    public function responseMessage($message = '', $code = 200)
+    public function responseMessage($message = '', $code = 2000)
     {
         return $this->response([], $message, $code);
     }
 
-    public function responseError($message = '', $code = 400)
+    public function responseError($message = '', $code = 3002)
     {
         return $this->response([], $message, $code);
     }
